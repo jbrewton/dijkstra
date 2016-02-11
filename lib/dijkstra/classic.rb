@@ -24,6 +24,7 @@ module Dijkstra
       create_graph_struct
     end
 
+    ### Second version
     def solve_literally
       dist = Hash.new
       prev = Hash.new
@@ -68,7 +69,9 @@ module Dijkstra
 
       result = "Shortest path is [#{shortest_sequence.reverse.join(',')}] with total cost #{dist[@target_node]}"
     end
+    ### Second version end
 
+    ### First version
     def solve
       # Start with the start_node
       current_node = @unvisited_vertices.delete @start_node
@@ -99,6 +102,7 @@ module Dijkstra
 
       result = "Shortest path is [#{shortest_sequence.reverse.map{|x| x.point}.join(',')}] with total cost #{@vertices[@target_node].dist}"
     end
+    ### First version end
 
     private 
 
