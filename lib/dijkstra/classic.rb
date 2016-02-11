@@ -24,6 +24,51 @@ module Dijkstra
       create_graph_struct
     end
 
+    def solve_literally
+      dist = Hash.new
+      prev = Hash.new
+      visited = Array.new
+
+      q = Array.new
+
+      @vertices.each do |v, value|
+        dist[v] = Float::INFINITY
+        prev[v] = nil
+        q.push v
+      end
+
+      dist[@start_node] = 0
+
+      while !q.empty? do
+        u = dist.reject{|k,v| visited.include? k}.min_by{|k,v| v}[0]
+        q.delete u
+        visited.push u
+
+        @vertices[u].neighbors.each do |v, v_dist|
+          alt = dist[u] + v_dist
+          if alt < dist[v]
+            dist[v] = alt
+            prev[v] = u
+          end
+        end
+      end
+
+      return dist, prev
+    end
+
+    def meaning_of_life
+      dist, prev = solve_literally
+      shortest_sequence = Array.new
+      current_target = @target_node
+      while !prev[current_target].nil?
+        shortest_sequence << current_target
+        current_target = prev[current_target]
+      end
+      shortest_sequence << @start_node
+
+      result = "Shortest path is [#{shortest_sequence.reverse.join(',')}] with total cost #{dist[@target_node]}"
+    end
+
     def solve
       # Start with the start_node
       current_node = @unvisited_vertices.delete @start_node
