@@ -7,4 +7,4 @@ target_node = ARGV[2]
 
 classic = Dijkstra::Classic.new graph_file, start_node, target_node
 
-puts classic.solve
+puts classic.meaning_of_life
