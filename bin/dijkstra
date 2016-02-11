@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require 'dijkstra'
+
+graph_file = ARGV[0]
+start_node = ARGV[1]
+target_node = ARGV[2]
+
+classic = Dijkstra::Classic.new graph_file, start_node, target_node
+
+puts classic.solve
