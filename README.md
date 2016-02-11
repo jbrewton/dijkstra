@@ -2,6 +2,8 @@
 
 Code example
 
+[ ![Codeship Status for jbrewton/dijkstra](https://codeship.com/projects/1a8655e0-b2a7-0133-aa07-02105821d9b0/status?branch=master)](https://codeship.com/projects/133434)
+
 ## Installation
 
 Add this line to your application's Gemfile:
